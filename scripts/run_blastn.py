@@ -13,7 +13,7 @@ import probe_helpers
 
 def build_blast_index(fasta_file, title):
     print('building index')
-    subprocess.run(['makeblastdb', '-in', fasta_file, '-parse_seqids', '-title', title, '-dbtype', 'nucl'], shell = False)
+    subprocess.run(['makeblastdb', '-in', fasta_file, '-parse_seqids', '-title', title, '-dbtype', 'nucl', '-maxfilesz \'10GB\''], shell = False)
     #create file to show snakemake that the index is completed
     touch_file = os.path.join(os.getcwd(), '%s_completed.txt' % title)
     Path(touch_file).touch()
